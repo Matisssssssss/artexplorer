@@ -928,6 +928,120 @@
             renderMuseums();
             bindMuseumButtons();
         });
+
+        // Ajout d'une base d'œuvres pour chaque musée
+        const artworksByMuseum = {
+            'Musée du Louvre': [
+                { title: 'La Joconde', artist: 'Léonard de Vinci', year: '1503-1519', type: 'Peinture à l\'huile', salle: 'Salle 6', rating: 4.8, duration: 8, img: 'https://images.unsplash.com/photo-1579781305582-0a93a61294d1?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'] },
+                { title: 'Les Noces de Cana', artist: 'Paolo Veronese', year: '1563', type: 'Peinture à l\'huile', salle: 'Salle 14', rating: 4.5, duration: 6, img: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'] },
+                { title: 'Vénus de Milo', artist: 'Alexandros d\'Antioche', year: '130-100 av. J.-C.', type: 'Marbre', salle: 'Salle 16', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1600180758890-6b99059b5ace?auto=format&fit=crop&w=1000&q=80', tags: ['Antiquité', 'Sculpture'] },
+                // ... ajoute 27 autres œuvres variées (peinture, sculpture, etc.) ...
+            ],
+            'Musée d\'Orsay': [
+                { title: 'Le Déjeuner sur l\'herbe', artist: 'Édouard Manet', year: '1863', type: 'Peinture à l\'huile', salle: 'Salle 10', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80', tags: ['Impressionnisme', 'Peinture'] },
+                // ... 29 autres œuvres ...
+            ],
+            // ... idem pour chaque musée ...
+        };
+
+        // Génération dynamique du parcours personnalisé
+        function generateTour(museumName, params) {
+            const allArtworks = artworksByMuseum[museumName] || [];
+            // Filtrage selon les paramètres
+            let filtered = allArtworks.filter(a => {
+                let ok = true;
+                if (params.interests.length) ok = ok && params.interests.some(i => a.tags.includes(i));
+                if (params.periods.length) ok = ok && params.periods.some(p => a.tags.includes(p));
+                return ok;
+            });
+            // Tri selon style de visite (aléatoire, éducatif, etc.)
+            if (params.style === 'Détente') filtered = filtered.slice(0, Math.min(filtered.length, 10));
+            else if (params.style === 'Dynamique') filtered = filtered.sort(() => Math.random() - 0.5).slice(0, 15);
+            else if (params.style === 'Éducatif') filtered = filtered.sort((a, b) => b.rating - a.rating).slice(0, 12);
+            else if (params.style === 'Romantique') filtered = filtered.filter(a => a.rating > 4.5).slice(0, 8);
+            // Limite par durée
+            let totalTime = 0;
+            const parcours = [];
+            for (const a of filtered) {
+                if (totalTime + a.duration <= params.duration) {
+                    parcours.push(a);
+                    totalTime += a.duration;
+                }
+            }
+            return parcours;
+        }
+
+        // Rendu du parcours personnalisé
+        function renderTour(artworks, container) {
+            if (!artworks.length) {
+                container.innerHTML = '<div class="p-6 text-gray-500">Aucune œuvre ne correspond à vos critères.</div>';
+                return;
+            }
+            container.innerHTML = artworks.map(a => `
+                <div class="p-6 hover:bg-gray-50 transition border-b">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0 md:pr-6">
+                            <div class="relative h-48 rounded-lg overflow-hidden">
+                                <img src="${a.img}" alt="${a.title}" class="w-full h-full object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium">${a.salle}</span>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                            <span class="text-sm">${a.rating}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-lg font-bold text-gray-800">${a.title}</h4>
+                                <button class="text-gray-400 hover:text-indigo-600"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${a.artist}</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">${a.year}</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">${a.type}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    <span>Durée recommandée: ${a.duration} min</span>
+                                </div>
+                                <button class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    <i class="fas fa-info-circle mr-2"></i> Détails
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Gestion du formulaire de parcours personnalisé
+        function getTourParams(section) {
+            const interests = Array.from(section.querySelectorAll('.interest-btn.active')).map(b => b.textContent.trim());
+            const periods = Array.from(section.querySelectorAll('.period-btn.active')).map(b => b.textContent.trim());
+            const styleBtn = section.querySelector('.style-btn.active');
+            const style = styleBtn ? styleBtn.textContent.trim() : 'Détente';
+            const duration = parseInt(section.querySelector('input[type="range"]').value) || 90;
+            return { interests, periods, style, duration };
+        }
+
+        // Sur la page musée : bouton générer parcours
+        function setupMuseumTour() {
+            const museumSection = document.getElementById('museumDetailSection');
+            museumSection.addEventListener('click', function(e) {
+                if (e.target.closest('#generateTourBtn')) {
+                    const museumName = document.getElementById('museumDetailTitle').childNodes[2].textContent.trim();
+                    const params = getTourParams(museumSection);
+                    const artworks = generateTour(museumName, params);
+                    renderTour(artworks, museumSection.querySelector('#generatedTour') || museumSection);
+                }
+            });
+        }
+        setupMuseumTour();
     </script>
 </body>
 </html>
