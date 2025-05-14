@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtExplorer - Visites de musée intelligentes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .artwork-card:hover .artwork-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animated-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="animated-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-landmark text-3xl"></i>
+                    <h1 class="text-2xl font-bold">ArtExplorer</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="hover:underline font-medium">Accueil</a>
+                    <a href="#" class="hover:underline font-medium">Musées</a>
+                    <a href="#" class="hover:underline font-medium">Parcours</a>
+                    <a href="#" class="hover:underline font-medium">Favoris</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-white text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-50 transition">
+                        Connexion
+                    </button>
+                    <button class="md:hidden text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-12 mb-16 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Découvrez l'art comme jamais auparavant</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8">L'IA crée des parcours personnalisés selon vos goûts et votre humeur</p>
+                <div class="max-w-xl mx-auto bg-white rounded-full p-1 shadow-lg flex">
+                    <input type="text" placeholder="Rechercher un musée, une œuvre..." class="flex-grow px-6 py-3 rounded-full focus:outline-none text-gray-800">
+                    <button class="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Museum Selection -->
+        <section class="mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Musées partenaires</h2>
+                <a href="#" class="text-indigo-600 hover:underline">Voir tout</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Museum Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Louvre" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-bold">Musée du Louvre</h3>
+                            <p class="text-sm">Paris, France</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Art classique</span>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.9</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA.</p>
+                        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+                            Explorer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Museum Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Orsay" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-bold">Musée d'Orsay</h3>
+                            <p class="text-sm">Paris, France</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Impressionnisme</span>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.8</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents.</p>
+                        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+                            Explorer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Museum Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1591862719729-6a15c2d1c409?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pompidou" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-bold">Centre Pompidou</h3>
+                            <p class="text-sm">Paris, France</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Art moderne</span>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.7</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique.</p>
+                        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+                            Explorer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tour Customization -->
+        <section class="mb-16 bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Créez votre parcours idéal</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">Vos centres d'intérêt</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <button class="interest-btn active bg-indigo-100 text-indigo-800">Peinture</button>
+                            <button class="interest-btn bg-indigo-100 text-indigo-800">Sculpture</button>
+                            <button class="interest-btn bg-indigo-100 text-indigo-800">Photographie</button>
+                            <button class="interest-btn bg-indigo-100 text-indigo-800">Art numérique</button>
+                            <button class="interest-btn bg-indigo-100 text-indigo-800">Architecture</button>
+                            <button class="interest-btn bg-indigo-100 text-indigo-800">Design</button>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">Période historique</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <button class="period-btn active bg-indigo-100 text-indigo-800">Renaissance</button>
+                            <button class="period-btn bg-indigo-100 text-indigo-800">Baroque</button>
+                            <button class="period-btn bg-indigo-100 text-indigo-800">Impressionnisme</button>
+                            <button class="period-btn bg-indigo-100 text-indigo-800">Moderne</button>
+                            <button class="period-btn bg-indigo-100 text-indigo-800">Contemporain</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">Durée de visite</h3>
+                        <div class="flex items-center">
+                            <input type="range" min="30" max="240" value="90" step="30" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <span class="ml-4 font-medium text-gray-700">90 min</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>30 min</span>
+                            <span>4h</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">Niveau de détail</h3>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Superficiel</span>
+                                    <span class="text-sm font-medium text-gray-700">Approfondi</span>
+                                </div>
+                                <input type="range" min="1" max="5" value="3" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">Style de visite</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="style-btn active bg-indigo-100 text-indigo-800">
+                                <i class="fas fa-walking mr-2"></i> Détente
+                            </button>
+                            <button class="style-btn bg-indigo-100 text-indigo-800">
+                                <i class="fas fa-bolt mr-2"></i> Dynamique
+                            </button>
+                            <button class="style-btn bg-indigo-100 text-indigo-800">
+                                <i class="fas fa-graduation-cap mr-2"></i> Éducatif
+                            </button>
+                            <button class="style-btn bg-indigo-100 text-indigo-800">
+                                <i class="fas fa-heart mr-2"></i> Romantique
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <button id="generateTourBtn" class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center">
+                            <i class="fas fa-magic mr-2"></i> Générer mon parcours IA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generated Tour (Hidden by default) -->
+        <section id="generatedTour" class="mb-16 hidden">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Votre parcours personnalisé</h2>
+                <div class="flex space-x-3">
+                    <button class="bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-share-alt mr-2"></i> Partager
+                    </button>
+                    <button class="bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fas fa-download mr-2"></i> Télécharger
+                    </button>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6 border-b">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Parcours Renaissance au Louvre</h3>
+                            <p class="text-gray-600">Généré spécialement pour vos goûts artistiques</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-indigo-600">12</div>
+                                <div class="text-xs text-gray-500">ŒUVRES</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-indigo-600">90</div>
+                                <div class="text-xs text-gray-500">MINUTES</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-indigo-600">2.1</div>
+                                <div class="text-xs text-gray-500">KM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divide-y divide-gray-200 max-h-[500px] overflow-y-auto custom-scrollbar">
+                    <!-- Artwork 1 -->
+                    <div class="p-6 hover:bg-gray-50 transition">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/3 mb-4 md:mb-0 md:pr-6">
+                                <div class="relative h-48 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1579781305582-0a93a61294d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mona Lisa" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm font-medium">Salle 6</span>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                                <span class="text-sm">4.8</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-bold text-gray-800">La Joconde (Mona Lisa)</h4>
+                                    <button class="text-gray-400 hover:text-indigo-600">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Léonard de Vinci</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">1503-1519</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Peinture à l'huile</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Ce portrait énigmatique de Lisa Gherardini, épouse de Francesco del Giocondo, est devenu l'icône absolue de la Renaissance. Notre IA a détecté que vous appréciez particulièrement les techniques de sfumato et les compositions pyramidales caractéristiques de De Vinci.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>Durée recommandée: 8 min</span>
+                                    </div>
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                        <i class="fas fa-info-circle mr-2"></i> Détails
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork 2 -->
+                    <div class="p-6 hover:bg-gray-50 transition">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/3 mb-4 md:mb-0 md:pr-6">
+                                <div class="relative h-48 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Wedding at Cana" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm font-medium">Salle 14</span>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                                <span class="text-sm">4.5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-bold text-gray-800">Les Noces de Cana</h4>
+                                    <button class="text-gray-400 hover:text-indigo-600">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Paolo Veronese</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">1563</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Peinture à l'huile</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Ce monumental banquet biblique illustre le premier miracle du Christ. Notre IA a sélectionné cette œuvre pour son riche détail architectural et ses costumes somptueux qui correspondent à votre intérêt pour la culture matérielle de la Renaissance.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>Durée recommandée: 6 min</span>
+                                    </div>
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                        <i class="fas fa-info-circle mr-2"></i> Détails
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork 3 -->
+                    <div class="p-6 hover:bg-gray-50 transition">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/3 mb-4 md:mb-0 md:pr-6">
+                                <div class="relative h-48 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1600180758890-6b99059b5ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Venus de Milo" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm font-medium">Salle 16</span>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                                <span class="text-sm">4.7</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-bold text-gray-800">Vénus de Milo</h4>
+                                    <button class="text-gray-400 hover:text-indigo-600">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Alexandros d'Antioche</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">130-100 av. J.-C.</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Marbre</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Bien qu'antique, cette sculpture emblématique a profondément influencé l'art de la Renaissance. Notre IA l'a incluse pour son traitement magistral de la forme humaine et son équilibre harmonieux qui répondent à votre appréciation des canons esthétiques classiques.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        <span>Durée recommandée: 7 min</span>
+                                    </div>
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                        <i class="fas fa-info-circle mr-2"></i> Détails
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 border-t flex justify-between items-center">
+                    <div class="text-gray-600">
+                        <i class="fas fa-info-circle mr-2 text-indigo-600"></i>
+                        Votre parcours est optimisé pour éviter les foules et suivre un chemin logique.
+                    </div>
+                    <button class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition flex items-center">
+                        <i class="fas fa-map-marked-alt mr-2"></i> Commencer la visite
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Comment notre IA améliore votre visite</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Parcours personnalisé</h3>
+                    <p class="text-gray-600">Notre IA analyse vos préférences pour créer un itinéraire sur mesure, mettant en avant les œuvres qui correspondent à vos goûts.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-route text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Optimisation du trajet</h3>
+                    <p class="text-gray-600">L'algorithme calcule le chemin le plus efficace entre les œuvres, en tenant compte de l'affluence en temps réel.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-comment-alt text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Explications adaptées</h3>
+                    <p class="text-gray-600">Les commentaires sur les œuvres sont générés dynamiquement selon votre niveau de connaissance et vos centres d'intérêt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="mb-16 bg-indigo-50 rounded-xl p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Ce que disent nos visiteurs</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sophie L.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Grâce à l'IA, j'ai découvert des œuvres que je n'aurais jamais remarquées seul. Les explications étaient parfaitement adaptées à mon niveau."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Thomas P.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Le parcours évitait intelligemment les salles bondées. J'ai pu profiter des chefs-d'œuvre dans des conditions optimales."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-landmark mr-2"></i> ArtExplorer
+                    </h3>
+                    <p class="text-gray-400">Révolutionnez votre expérience muséale grâce à notre technologie IA avancée.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Musées</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Parcours</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Favoris</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Légal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i> contact@artexplorer.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i> +33 1 23 45 67 89
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Paris, France
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 ArtExplorer. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle active state for interest buttons
+        document.querySelectorAll('.interest-btn, .period-btn, .style-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                this.classList.toggle('bg-indigo-600');
+                this.classList.toggle('text-white');
+            });
+        });
+
+        // Update duration display
+        const durationSlider = document.querySelector('input[type="range"]');
+        const durationDisplay = document.querySelector('span:has(+ .flex.justify-between.text-xs.text-gray-500)');
+        
+        durationSlider.addEventListener('input', function() {
+            durationDisplay.textContent = `${this.value} min`;
+        });
+
+        // Generate tour button
+        document.getElementById('generateTourBtn').addEventListener('click', function() {
+            const generatedTour = document.getElementById('generatedTour');
+            generatedTour.classList.remove('hidden');
+            generatedTour.scrollIntoView({ behavior: 'smooth' });
+            
+            // Simulate AI generation
+            this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Génération en cours...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Parcours généré!';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-magic mr-2"></i> Générer un nouveau parcours';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Toggle favorite
+        document.querySelectorAll('.fa-heart').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.toggle('far');
+                this.classList.toggle('fas');
+                this.classList.toggle('text-red-500');
+            });
+        });
+    </script>
+</body>
+</html>
