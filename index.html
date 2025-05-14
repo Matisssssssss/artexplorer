@@ -809,7 +809,7 @@
                 location: 'Paris, France',
                 tag: 'Art classique',
                 rating: '4.9',
-                desc: 'Découvrez des chefs-d’œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA.'
+                desc: 'Découvrez des chefs-d’œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA. Expositions temporaires, ateliers pour enfants, visites guidées et accès PMR disponibles.'
             },
             {
                 title: 'Musée d\'Orsay',
@@ -817,7 +817,7 @@
                 location: 'Paris, France',
                 tag: 'Impressionnisme',
                 rating: '4.8',
-                desc: 'Plongez dans l’art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents.'
+                desc: 'Plongez dans l’art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents. Audioguides multilingues, espace famille, restaurant panoramique.'
             },
             {
                 title: 'Centre Pompidou',
@@ -825,37 +825,108 @@
                 location: 'Paris, France',
                 tag: 'Art moderne',
                 rating: '4.7',
-                desc: 'Explorez l’art contemporain avec des parcours adaptés à votre curiosité artistique.'
+                desc: 'Explorez l’art contemporain avec des parcours adaptés à votre curiosité artistique. Bibliothèque, ateliers créatifs, expositions interactives.'
+            },
+            {
+                title: 'Musée des Confluences',
+                img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80',
+                location: 'Lyon, France',
+                tag: 'Sciences & Civilisations',
+                rating: '4.6',
+                desc: 'Un musée d’histoire naturelle et d’anthropologie à l’architecture futuriste. Parcours famille, expositions immersives, espace enfants.'
+            },
+            {
+                title: 'Musée Mucem',
+                img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1000&q=80',
+                location: 'Marseille, France',
+                tag: 'Cultures Méditerranéennes',
+                rating: '4.5',
+                desc: 'Un musée unique dédié aux civilisations méditerranéennes. Vue mer, expositions temporaires, jardins suspendus.'
+            },
+            {
+                title: 'Musée d’Art Moderne de Lille',
+                img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80',
+                location: 'Lille, France',
+                tag: 'Art moderne',
+                rating: '4.4',
+                desc: 'Collections d’art moderne, contemporain et brut. Parc de sculptures, médiation culturelle, café design.'
+            },
+            {
+                title: 'Musée Picasso',
+                img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80',
+                location: 'Paris, France',
+                tag: 'Art moderne',
+                rating: '4.7',
+                desc: 'La plus grande collection publique d’œuvres de Picasso. Visites thématiques, ateliers, boutique spécialisée.'
+            },
+            {
+                title: 'Musée du Quai Branly',
+                img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1000&q=80',
+                location: 'Paris, France',
+                tag: 'Arts & Civilisations',
+                rating: '4.6',
+                desc: 'Arts d’Afrique, d’Asie, d’Océanie et des Amériques. Jardins, expositions immersives, médiation jeune public.'
             }
         ];
-        // Affichage du détail musée
-        document.querySelectorAll('.grid .bg-white .w-full.h-full.object-cover').forEach((img, idx) => {
-            img.parentElement.parentElement.parentElement.querySelector('button').addEventListener('click', function() {
-                // Remplit la section détail musée
-                const m = museums[idx];
-                document.getElementById('museumDetailImg').src = m.img;
-                document.getElementById('museumDetailTitle').childNodes[2].textContent = m.title;
-                document.getElementById('museumDetailLocation').textContent = m.location;
-                document.getElementById('museumDetailTag').textContent = m.tag;
-                document.getElementById('museumDetailRating').innerHTML = `<i class='fas fa-star'></i> ${m.rating}`;
-                document.getElementById('museumDetailDesc').textContent = m.desc;
-                // Affiche la section détail musée
-                document.getElementById('museumDetailSection').classList.remove('hidden');
-                document.getElementById('homeSection').classList.add('hidden');
-                document.getElementById('museesSection').classList.add('hidden');
-                document.getElementById('parcoursSection').classList.add('hidden');
-                document.getElementById('favorisSection').classList.add('hidden');
-                // Ajoute la section parcours personnalisé dans la page musée
-                document.getElementById('museumCustomTour').innerHTML = document.querySelector('#parcoursSection > section').outerHTML;
-                // Scroll top
-                window.scrollTo({top: 0, behavior: 'smooth'});
+        // Génération dynamique des musées dans les sections home et musées
+        function renderMuseums() {
+            const museumCards = museums.map((m, idx) => `
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48">
+                        <img src="${m.img}" alt="${m.title}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-bold">${m.title}</h3>
+                            <p class="text-sm">${m.location}</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">${m.tag}</span>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">${m.rating}</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">${m.desc.substring(0, 80)}...</p>
+                        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition" data-museum-idx="${idx}">
+                            Explorer
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.grid.grid-cols-1').forEach(grid => grid.innerHTML = museumCards);
+        }
+        renderMuseums();
+
+        // Détail musée : écouteurs sur les boutons Explorer (après génération)
+        function bindMuseumButtons() {
+            document.querySelectorAll('button[data-museum-idx]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-museum-idx'));
+                    const m = museums[idx];
+                    document.getElementById('museumDetailImg').src = m.img;
+                    document.getElementById('museumDetailTitle').childNodes[2].textContent = m.title;
+                    document.getElementById('museumDetailLocation').textContent = m.location;
+                    document.getElementById('museumDetailTag').textContent = m.tag;
+                    document.getElementById('museumDetailRating').innerHTML = `<i class='fas fa-star'></i> ${m.rating}`;
+                    document.getElementById('museumDetailDesc').textContent = m.desc;
+                    document.getElementById('museumDetailSection').classList.remove('hidden');
+                    document.getElementById('homeSection').classList.add('hidden');
+                    document.getElementById('museesSection').classList.add('hidden');
+                    document.getElementById('parcoursSection').classList.add('hidden');
+                    document.getElementById('favorisSection').classList.add('hidden');
+                    document.getElementById('museumCustomTour').innerHTML = document.querySelector('#parcoursSection > section').outerHTML;
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
             });
-        });
-        // Bouton retour
-        document.getElementById('backToMuseumsBtn').addEventListener('click', function() {
-            document.getElementById('museumDetailSection').classList.add('hidden');
-            document.getElementById('museesSection').classList.remove('hidden');
-            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        bindMuseumButtons();
+
+        // Relier à chaque rendu
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMuseums();
+            bindMuseumButtons();
         });
     </script>
 </body>
