@@ -104,7 +104,7 @@
                                     <span class="text-gray-600 ml-1">4.9</span>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-4">Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA.</p>
+                            <p class="text-gray-600 mb-4">Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA. Expositions temporaires, ateliers pour enfants, visites guidées et accès PMR disponibles.</p>
                             <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                                 Explorer
                             </button>
@@ -129,7 +129,7 @@
                                     <span class="text-gray-600 ml-1">4.8</span>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-4">Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents.</p>
+                            <p class="text-gray-600 mb-4">Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents. Audioguides multilingues, espace famille, restaurant panoramique.</p>
                             <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                                 Explorer
                             </button>
@@ -154,7 +154,7 @@
                                     <span class="text-gray-600 ml-1">4.7</span>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-4">Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique.</p>
+                            <p class="text-gray-600 mb-4">Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique. Bibliothèque, ateliers créatifs, expositions interactives.</p>
                             <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                                 Explorer
                             </button>
@@ -191,8 +191,8 @@
                         <div>
                             <h3 class="text-lg font-semibold mb-3 text-gray-700">Durée de visite</h3>
                             <div class="flex items-center">
-                                <input type="range" min="30" max="240" value="90" step="30" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                                <span class="ml-4 font-medium text-gray-700">90 min</span>
+                                <input type="range" min="30" max="240" value="90" step="30" class="duration-slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                <span class="duration-display ml-4 font-medium text-gray-700">90 min</span>
                             </div>
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
                                 <span>30 min</span>
@@ -228,6 +228,37 @@
                                 <button class="style-btn bg-indigo-100 text-indigo-800">
                                     <i class="fas fa-heart mr-2"></i> Romantique
                                 </button>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-700">Narration & accessibilité</h3>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Style narratif préféré</label>
+                                    <select class="narrative-style-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option value="">Auto (recommandé)</option>
+                                        <option value="anecdote_amusante">Anecdote amusante</option>
+                                        <option value="analyse_experte">Analyse experte</option>
+                                        <option value="description_courte">Description courte</option>
+                                        <option value="pour_enfants">Pour enfants</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Type de groupe</label>
+                                    <select class="group-type-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option>Adulte</option>
+                                        <option>Famille</option>
+                                        <option>Enfants</option>
+                                        <option>Expert</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Accessibilité</label>
+                                    <select class="accessibility-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option>Texte</option>
+                                        <option>Audio</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-8">
@@ -501,7 +532,7 @@
                                 <span class="text-gray-600 ml-1">4.9</span>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA.</p>
+                        <p class="text-gray-600 mb-4">Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA. Expositions temporaires, ateliers pour enfants, visites guidées et accès PMR disponibles.</p>
                         <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                             Explorer
                         </button>
@@ -526,7 +557,7 @@
                                 <span class="text-gray-600 ml-1">4.8</span>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents.</p>
+                        <p class="text-gray-600 mb-4">Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents. Audioguides multilingues, espace famille, restaurant panoramique.</p>
                         <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                             Explorer
                         </button>
@@ -551,7 +582,7 @@
                                 <span class="text-gray-600 ml-1">4.7</span>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique.</p>
+                        <p class="text-gray-600 mb-4">Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique. Bibliothèque, ateliers créatifs, expositions interactives.</p>
                         <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                             Explorer
                         </button>
@@ -589,8 +620,8 @@
                         <div>
                             <h3 class="text-lg font-semibold mb-3 text-gray-700">Durée de visite</h3>
                             <div class="flex items-center">
-                                <input type="range" min="30" max="240" value="90" step="30" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                                <span class="ml-4 font-medium text-gray-700">90 min</span>
+                                <input type="range" min="30" max="240" value="90" step="30" class="duration-slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                <span class="duration-display ml-4 font-medium text-gray-700">90 min</span>
                             </div>
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
                                 <span>30 min</span>
@@ -626,6 +657,37 @@
                                 <button class="style-btn bg-indigo-100 text-indigo-800">
                                     <i class="fas fa-heart mr-2"></i> Romantique
                                 </button>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-700">Narration & accessibilité</h3>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Style narratif préféré</label>
+                                    <select class="narrative-style-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option value="">Auto (recommandé)</option>
+                                        <option value="anecdote_amusante">Anecdote amusante</option>
+                                        <option value="analyse_experte">Analyse experte</option>
+                                        <option value="description_courte">Description courte</option>
+                                        <option value="pour_enfants">Pour enfants</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Type de groupe</label>
+                                    <select class="group-type-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option>Adulte</option>
+                                        <option>Famille</option>
+                                        <option>Enfants</option>
+                                        <option>Expert</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Accessibilité</label>
+                                    <select class="accessibility-select w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                                        <option>Texte</option>
+                                        <option>Audio</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-8">
@@ -769,11 +831,9 @@
         });
 
         // Update duration display
-        const durationSlider = document.querySelector('input[type="range"]');
-        const durationDisplay = document.querySelector('span:has(+ .flex.justify-between.text-xs.text-gray-500)');
-        
-        durationSlider.addEventListener('input', function() {
-            durationDisplay.textContent = `${this.value} min`;
+        document.querySelectorAll('.duration-slider').forEach(slider => {
+            const display = slider.parentElement.querySelector('.duration-display');
+            slider.addEventListener('input', function() { if (display) display.textContent = `${this.value} min`; });
         });
 
         // Generate tour button
@@ -809,7 +869,7 @@
                 location: 'Paris, France',
                 tag: 'Art classique',
                 rating: '4.9',
-                desc: 'Découvrez des chefs-d’œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA. Expositions temporaires, ateliers pour enfants, visites guidées et accès PMR disponibles.'
+                desc: "Découvrez des chefs-d'œuvre comme la Joconde et la Vénus de Milo avec nos parcours IA. Expositions temporaires, ateliers pour enfants, visites guidées et accès PMR disponibles."
             },
             {
                 title: 'Musée d\'Orsay',
@@ -817,7 +877,7 @@
                 location: 'Paris, France',
                 tag: 'Impressionnisme',
                 rating: '4.8',
-                desc: 'Plongez dans l’art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents. Audioguides multilingues, espace famille, restaurant panoramique.'
+                desc: "Plongez dans l'art du 19e siècle avec Monet, Van Gogh et Renoir grâce à nos parcours intelligents. Audioguides multilingues, espace famille, restaurant panoramique."
             },
             {
                 title: 'Centre Pompidou',
@@ -825,7 +885,7 @@
                 location: 'Paris, France',
                 tag: 'Art moderne',
                 rating: '4.7',
-                desc: 'Explorez l’art contemporain avec des parcours adaptés à votre curiosité artistique. Bibliothèque, ateliers créatifs, expositions interactives.'
+                desc: "Explorez l'art contemporain avec des parcours adaptés à votre curiosité artistique. Bibliothèque, ateliers créatifs, expositions interactives."
             },
             {
                 title: 'Musée des Confluences',
@@ -833,7 +893,7 @@
                 location: 'Lyon, France',
                 tag: 'Sciences & Civilisations',
                 rating: '4.6',
-                desc: 'Un musée d’histoire naturelle et d’anthropologie à l’architecture futuriste. Parcours famille, expositions immersives, espace enfants.'
+                desc: "Un musée d'histoire naturelle et d'anthropologie à l'architecture futuriste. Parcours famille, expositions immersives, espace enfants."
             },
             {
                 title: 'Musée Mucem',
@@ -841,15 +901,15 @@
                 location: 'Marseille, France',
                 tag: 'Cultures Méditerranéennes',
                 rating: '4.5',
-                desc: 'Un musée unique dédié aux civilisations méditerranéennes. Vue mer, expositions temporaires, jardins suspendus.'
+                desc: "Un musée unique dédié aux civilisations méditerranéennes. Vue mer, expositions temporaires, jardins suspendus."
             },
             {
-                title: 'Musée d’Art Moderne de Lille',
+                title: "Musée d'Art Moderne de Lille",
                 img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80',
                 location: 'Lille, France',
                 tag: 'Art moderne',
                 rating: '4.4',
-                desc: 'Collections d’art moderne, contemporain et brut. Parc de sculptures, médiation culturelle, café design.'
+                desc: "Collections d'art moderne, contemporain et brut. Parc de sculptures, médiation culturelle, café design."
             },
             {
                 title: 'Musée Picasso',
@@ -857,7 +917,7 @@
                 location: 'Paris, France',
                 tag: 'Art moderne',
                 rating: '4.7',
-                desc: 'La plus grande collection publique d’œuvres de Picasso. Visites thématiques, ateliers, boutique spécialisée.'
+                desc: "La plus grande collection publique d'œuvres de Picasso. Visites thématiques, ateliers, boutique spécialisée."
             },
             {
                 title: 'Musée du Quai Branly',
@@ -865,7 +925,7 @@
                 location: 'Paris, France',
                 tag: 'Arts & Civilisations',
                 rating: '4.6',
-                desc: 'Arts d’Afrique, d’Asie, d’Océanie et des Amériques. Jardins, expositions immersives, médiation jeune public.'
+                desc: "Arts d'Afrique, d'Asie, d'Océanie et des Amériques. Jardins, expositions immersives, médiation jeune public."
             }
         ];
         // Génération dynamique des musées dans les sections home et musées
@@ -932,16 +992,28 @@
         // Ajout d'une base d'œuvres pour chaque musée
         const artworksByMuseum = {
             'Musée du Louvre': [
-                { title: 'La Joconde', artist: 'Léonard de Vinci', year: '1503-1519', type: 'Peinture à l\'huile', salle: 'Salle 6', rating: 4.8, duration: 8, img: 'https://images.unsplash.com/photo-1579781305582-0a93a61294d1?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'] },
-                { title: 'Les Noces de Cana', artist: 'Paolo Veronese', year: '1563', type: 'Peinture à l\'huile', salle: 'Salle 14', rating: 4.5, duration: 6, img: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'] },
-                { title: 'Vénus de Milo', artist: 'Alexandros d\'Antioche', year: '130-100 av. J.-C.', type: 'Marbre', salle: 'Salle 16', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1600180758890-6b99059b5ace?auto=format&fit=crop&w=1000&q=80', tags: ['Antiquité', 'Sculpture'] },
-                // ... ajoute 27 autres œuvres variées (peinture, sculpture, etc.) ...
+                { title: 'La Joconde', artist: 'Léonard de Vinci', year: '1503-1519', type: 'Peinture à l\'huile', salle: 'Salle 6', rating: 4.8, duration: 8, img: 'https://images.unsplash.com/photo-1579781305582-0a93a61294d1?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'], contents: {
+                    'anecdote_amusante': { text: 'En 1911, la Joconde fait sa plus grande sortie: on la vole ! Résultat: elle devient une superstar. Et ce sourire? Un mystère, comme un secret partagé. Léonard l\'aurait gardée près de lui jusqu\'à la fin, comme un carnet de recherches vivant.', audioUrl: null },
+                    'analyse_experte': { text: 'Sfumato subtil, composition pyramidale, regard en trois-quarts. Léonard superpose des glacis pour fondre les contours. Le paysage atmosphérique et la torsion du buste créent une dynamique sereine.', audioUrl: null },
+                    'description_courte': { text: 'Portrait célèbre au sourire énigmatique, chef-d'œuvre de Léonard. Sfumato, composition pyramidale, lumière douce.', audioUrl: null },
+                    'pour_enfants': { text: 'Regarde son sourire: on dirait qu\'elle te suit du regard ! Léonard a peint en couches très fines, comme des crêpes de couleur.', audioUrl: null }
+                } },
+                { title: 'Les Noces de Cana', artist: 'Paolo Veronese', year: '1563', type: 'Peinture à l\'huile', salle: 'Salle 14', rating: 4.5, duration: 6, img: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=1000&q=80', tags: ['Renaissance', 'Peinture'], contents: {
+                    'anecdote_amusante': { text: 'Un banquet si grand qu\'il faudrait une rallonge de table infinie. Et au milieu: l\'eau qui devient vin. Veronese glisse des invités VIP comme des stars de l\'époque.', audioUrl: null },
+                    'description_courte': { text: 'Grande scène de banquet: miracle de l\'eau changée en vin. Couleurs éclatantes, architecture majestueuse.', audioUrl: null }
+                } },
+                { title: 'Vénus de Milo', artist: 'Alexandros d\'Antioche', year: '130-100 av. J.-C.', type: 'Marbre', salle: 'Salle 16', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1600180758890-6b99059b5ace?auto=format&fit=crop&w=1000&q=80', tags: ['Antiquité', 'Sculpture'], contents: {
+                    'analyse_experte': { text: 'Canon hellénistique: contrapposto, drapé mouillé, proportions idéalisées. La dynamique du torse compense l\'absence des bras, invitant à la reconstitution mentale.', audioUrl: null },
+                    'description_courte': { text: 'Icône antique sans bras, beauté équilibrée et drapé élégant.', audioUrl: null }
+                } }
             ],
             'Musée d\'Orsay': [
-                { title: 'Le Déjeuner sur l\'herbe', artist: 'Édouard Manet', year: '1863', type: 'Peinture à l\'huile', salle: 'Salle 10', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80', tags: ['Impressionnisme', 'Peinture'] },
-                // ... 29 autres œuvres ...
-            ],
-            // ... idem pour chaque musée ...
+                { title: 'Le Déjeuner sur l\'herbe', artist: 'Édouard Manet', year: '1863', type: 'Peinture à l\'huile', salle: 'Salle 10', rating: 4.7, duration: 7, img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80', tags: ['Impressionnisme', 'Peinture'], contents: {
+                    'anecdote_amusante': { text: 'Scandale à la clé: une pique-niqueuse sans tenue fait jaser Paris. Manet mélange salon chic et nature, comme si la mode débarquait à la campagne.', audioUrl: null },
+                    'analyse_experte': { text: 'Citation de la tradition et rupture: perspective abrupte, lumière plate, touche visible. Manet installe la modernité picturale.', audioUrl: null },
+                    'description_courte': { text: 'Scène moderne et provocatrice, naissance d\'une nouvelle peinture.', audioUrl: null }
+                } }
+            ]
         };
 
         // Génération dynamique du parcours personnalisé
@@ -977,8 +1049,12 @@
                 container.innerHTML = '<div class="p-6 text-gray-500">Aucune œuvre ne correspond à vos critères.</div>';
                 return;
             }
-            container.innerHTML = artworks.map(a => `
-                <div class="p-6 hover:bg-gray-50 transition border-b">
+            container.innerHTML = artworks.map(a => {
+                const prefs = { preferredNarrativeStyle: window.__preferredStyle || null, groupType: window.__groupType || 'Adulte', accessPreference: window.__accessPref || 'Texte', duration: window.__visitDuration || a.duration };
+                const selection = (window.AIEngineV2 ? window.AIEngineV2.selectContentForArtwork(a, prefs) : { styleKey: 'description_courte', styleLabel: 'Description courte', text: a.description || '', audioUrl: null, readingMinutes: a.duration });
+                const audioHtml = selection.audioUrl ? `<audio controls class="w-full mt-2"><source src="${selection.audioUrl}" type="audio/mpeg">Votre navigateur ne supporte pas l\'audio.</audio>` : '';
+                return `
+                <div class="p-6 hover:bg-gray-50 transition border-b" data-artwork-title="${a.title}" data-style-key="${selection.styleKey}">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/3 mb-4 md:mb-0 md:pr-6">
                             <div class="relative h-48 rounded-lg overflow-hidden">
@@ -1004,19 +1080,32 @@
                                 <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">${a.year}</span>
                                 <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">${a.type}</span>
                             </div>
-                            <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="style-label bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded flex items-center"><i class="fas fa-feather mr-1"></i> ${selection.styleLabel}</span>
+                                <span class="reading-minutes bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded flex items-center"><i class="fas fa-clock mr-1"></i> ${selection.readingMinutes} min</span>
+                                ${window.__accessPref === 'Audio' ? '<span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded flex items-center"><i class="fas fa-headphones mr-1"></i> Audio</span>' : ''}
+                            </div>
+                            <p class="content-text text-gray-700 whitespace-pre-line">${selection.text}</p>
+                            <div class="audio-container">${audioHtml}</div>
+                            <div class="flex justify-between items-center mt-3">
                                 <div class="flex items-center text-sm text-gray-500">
                                     <i class="fas fa-clock mr-1"></i>
                                     <span>Durée recommandée: ${a.duration} min</span>
                                 </div>
-                                <button class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
-                                    <i class="fas fa-info-circle mr-2"></i> Détails
-                                </button>
+                                <div class="flex items-center gap-2">
+                                    <button class="regen-btn text-indigo-600 hover:text-indigo-800 font-medium flex items-center" data-artwork-title="${a.title}">
+                                        <i class="fas fa-redo mr-2"></i> Régénérer
+                                    </button>
+                                    <div class="text-yellow-500 text-sm flex items-center">
+                                        <i class="far fa-thumbs-up mr-1 cursor-pointer feedback-like" data-artwork-title="${a.title}"></i>
+                                        <i class="far fa-thumbs-down ml-2 mr-1 cursor-pointer feedback-dislike" data-artwork-title="${a.title}"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
         }
 
         // Gestion du formulaire de parcours personnalisé
@@ -1025,7 +1114,15 @@
             const periods = Array.from(section.querySelectorAll('.period-btn.active')).map(b => b.textContent.trim());
             const styleBtn = section.querySelector('.style-btn.active');
             const style = styleBtn ? styleBtn.textContent.trim() : 'Détente';
-            const duration = parseInt(section.querySelector('input[type="range"]').value) || 90;
+            const durationInput = section.querySelector('.duration-slider');
+            const duration = durationInput ? parseInt(durationInput.value) : 90;
+            const narrativeStyle = (section.querySelector('.narrative-style-select') || {}).value || '';
+            const groupType = (section.querySelector('.group-type-select') || {}).value || 'Adulte';
+            const accessPref = (section.querySelector('.accessibility-select') || {}).value || 'Texte';
+            window.__preferredStyle = narrativeStyle || null;
+            window.__groupType = groupType;
+            window.__accessPref = accessPref;
+            window.__visitDuration = duration;
             return { interests, periods, style, duration };
         }
 
@@ -1035,6 +1132,7 @@
             museumSection.addEventListener('click', function(e) {
                 if (e.target.closest('#generateTourBtn')) {
                     const museumName = document.getElementById('museumDetailTitle').childNodes[2].textContent.trim();
+                    window.__currentMuseumName = museumName;
                     const params = getTourParams(museumSection);
                     const artworks = generateTour(museumName, params);
                     renderTour(artworks, museumSection.querySelector('#generatedTour') || museumSection);
@@ -1042,6 +1140,64 @@
             });
         }
         setupMuseumTour();
+
+        // Régénération et feedback
+        function findArtworkByTitle(title) {
+            const museumName = window.__currentMuseumName || 'Musée du Louvre';
+            const list = artworksByMuseum[museumName] || [];
+            return list.find(a => a.title === title);
+        }
+
+        function applySelectionToCard(cardEl, selection) {
+            const styleLabelEl = cardEl.querySelector('.style-label');
+            const readingEl = cardEl.querySelector('.reading-minutes');
+            const textEl = cardEl.querySelector('.content-text');
+            const audioEl = cardEl.querySelector('.audio-container');
+            if (styleLabelEl) styleLabelEl.innerHTML = `<i class="fas fa-feather mr-1"></i> ${selection.styleLabel}`;
+            if (readingEl) readingEl.innerHTML = `<i class="fas fa-clock mr-1"></i> ${selection.readingMinutes} min`;
+            if (textEl) textEl.textContent = selection.text;
+            if (audioEl) {
+                audioEl.innerHTML = selection.audioUrl ? `<audio controls class="w-full mt-2"><source src="${selection.audioUrl}" type="audio/mpeg">Votre navigateur ne supporte pas l\'audio.</audio>` : '';
+            }
+            cardEl.setAttribute('data-style-key', selection.styleKey || '');
+        }
+
+        document.addEventListener('click', function(e) {
+            const regen = e.target.closest('.regen-btn');
+            if (regen && window.AIEngineV2) {
+                const title = regen.getAttribute('data-artwork-title');
+                const card = regen.closest('[data-artwork-title]');
+                const artwork = findArtworkByTitle(title);
+                if (artwork) {
+                    const prefs = { preferredNarrativeStyle: window.__preferredStyle || card.getAttribute('data-style-key') || null, groupType: window.__groupType || 'Adulte', accessPreference: window.__accessPref || 'Texte', duration: window.__visitDuration || artwork.duration };
+                    const selection = window.AIEngineV2.regenerateContentVariant(artwork, prefs, {});
+                    applySelectionToCard(card, selection);
+                }
+            }
+            const like = e.target.closest('.feedback-like');
+            if (like && window.AIEngineV2) {
+                const title = like.getAttribute('data-artwork-title');
+                const card = like.closest('[data-artwork-title]');
+                const artwork = findArtworkByTitle(title);
+                if (artwork) {
+                    const prefs = { preferredNarrativeStyle: window.__preferredStyle || card.getAttribute('data-style-key') || null, groupType: window.__groupType || 'Adulte', accessPreference: window.__accessPref || 'Texte', duration: window.__visitDuration || artwork.duration };
+                    const selection = window.AIEngineV2.regenerateContentVariant(artwork, prefs, { rating: 5 });
+                    applySelectionToCard(card, selection);
+                }
+            }
+            const dislike = e.target.closest('.feedback-dislike');
+            if (dislike && window.AIEngineV2) {
+                const title = dislike.getAttribute('data-artwork-title');
+                const card = dislike.closest('[data-artwork-title]');
+                const artwork = findArtworkByTitle(title);
+                if (artwork) {
+                    const prefs = { preferredNarrativeStyle: window.__preferredStyle || card.getAttribute('data-style-key') || null, groupType: window.__groupType || 'Adulte', accessPreference: window.__accessPref || 'Texte', duration: window.__visitDuration || artwork.duration };
+                    const selection = window.AIEngineV2.regenerateContentVariant(artwork, prefs, { rating: 2 });
+                    applySelectionToCard(card, selection);
+                }
+            }
+        });
     </script>
+    <script src="ai-engine-v2.js"></script>
 </body>
 </html>
